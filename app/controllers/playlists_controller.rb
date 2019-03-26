@@ -20,6 +20,12 @@ class PlaylistsController < ApplicationController
     render json: @playlist, status: :OK
   end
 
+  def destroy
+    @playlist = Playlist.find(params[:id])
+    @playlist.destroy
+    render json: @playlist, status: :deleted
+  end
+
   private
 
   def playlist_params
