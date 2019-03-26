@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
   def index
     @playlists = Playlist.all
-    render json: @playlists, status: :OK
+    render json: @playlists, status: :OK, :include => :users
   end
 
   def show
