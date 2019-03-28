@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
   def index
     @playlists = Playlist.all
-    render json: @playlists, status: :OK, :include => :users
+    render json: @playlists, status: :OK, :include => [:user, :songs]
   end
 
   def show
@@ -29,6 +29,6 @@ class PlaylistsController < ApplicationController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :user_id)
   end
 end
